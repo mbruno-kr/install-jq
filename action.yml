@@ -1,10 +1,10 @@
-name: 'Install JQ'
-description: 'Installs the cli tool JQ'
+name: "Install JQ"
+description: "Installs the cli tool JQ"
 inputs:
-  version:  # id of input
-    description: 'Version to install'
+  version: # id of input
+    description: "Version to install"
     required: true
-    default: 'latest'
+    default: "latest"
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
