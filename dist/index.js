@@ -20093,7 +20093,7 @@ try {
   let tag = core.getInput("tag");
   let fetchReleaseUrl;
   
-  if (tag.toLowerCase === "latest") {
+  if (tag.toLowerCase() === "latest") {
     fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/latest`
   } else {
     fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/tags/${tag}`
