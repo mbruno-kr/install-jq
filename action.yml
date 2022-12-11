@@ -1,8 +1,8 @@
 name: "Install JQ"
 description: "Installs the cli tool JQ"
 inputs:
-  version: # id of input
-    description: "Version to install"
+  tag: # id of input
+    description: "tag to install"
     required: true
     default: "latest"
 runs:

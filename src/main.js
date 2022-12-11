@@ -1,22 +1,23 @@
+const {default: axios} = require("axios");
 const core = require("@actions/core");
 const github = require("@actions/github");
-const { spawnSync } = require("child_process");
-const fs = require("fs");
-const { glob } = require("glob");
-
 try {
   // `who-to-greet` input defined in action metadata file
-  let version = core.getInput("version");
-  //   let fetchReleaseUrl = `https://api.github.com/repos/${}/${repo}/releases/latest`
-  glob(
-    "/home/runner/work/_temp/_runner_file_commands/add_path_*",
-    (_e, files) => console.log(files)
-  );
+  let version = core.getInput("tag");
+  let fetchReleaseUrl;
+  
   if (version.toLowerCase === "latest") {
+    fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/latest`
+  } else {
+    fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/tags/${tag}`
   }
 
-  console.log("this file:", process.env["GITHUB_PATH"]);
-  fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
+  axios.get(fetchReleaseUrl).then(console.log)
+
+  
+  
+
+  
 } catch (error) {
   core.setFailed(error.message);
 }
