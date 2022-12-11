@@ -16143,7 +16143,7 @@ try {
   //   let fetchReleaseUrl = `https://api.github.com/repos/${}/${repo}/releases/latest`
   glob(
     "/home/runner/work/_temp/_runner_file_commands/add_path_*",
-    (e, (files) => console.log(files))
+    (_e, files) => console.log(files)
   );
   if (version.toLowerCase === "latest") {
   }
