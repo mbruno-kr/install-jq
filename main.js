@@ -13,6 +13,7 @@ try {
 
   spawnSync(`echo "test_var=true" >> $GITHUB_ENV`)
 
+  process.env["GITHUB_ENV"] += "\ntest_var=true"
   
   
 
