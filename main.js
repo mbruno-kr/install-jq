@@ -1,6 +1,9 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const {spawnSync} = require("child_process");
+const fs = require('fs');
+
+
 
 
 try {
@@ -11,12 +14,7 @@ try {
     
   }
 
-  spawnSync(`echo "test_var=true" >> $GITHUB_ENV`)
-
-  console.log(process.env["GITHUB_ENV"])
-  
-
-  core.exportVariable("test_var", "true")
+  fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
     
   
 } catch (error) {
