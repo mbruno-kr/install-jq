@@ -22,7 +22,7 @@ try {
     .then(({ browser_download_url }) => {
       console.log({
         browser_download_url,
-        action_path: github.action_path,
+        env: process.env,
       });
     });
 } catch (error) {
