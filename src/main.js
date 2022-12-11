@@ -7,16 +7,14 @@ try {
   let fetchReleaseUrl;
   
   if (tag.toLowerCase === "latest") {
-    fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/latest`
+    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/latest`
   } else {
-    fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/tags/${tag}`
+    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/tags/${tag}`
   }
 
+  console.log({status: "fetching", fetchReleaseUrl})
+
   axios.get(fetchReleaseUrl).then(console.log)
-
-  
-  
-
   
 } catch (error) {
   core.setFailed(error.message);
