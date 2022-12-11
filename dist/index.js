@@ -20107,7 +20107,10 @@ try {
       Promise.resolve(data.find(({ name }) => name.includes("linux64")))
     )
     .then(({ browser_download_url }) => {
-      console.log({ browser_download_url });
+      console.log({
+        browser_download_url,
+        action_path: process.env["GITHUB_ACTION_PATH"],
+      });
     });
 } catch (error) {
   core.setFailed(error.message);
