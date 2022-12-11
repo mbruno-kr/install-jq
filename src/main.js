@@ -15,7 +15,7 @@ try {
     
   }
 
-  console.log(process.env["GITHUB_PATH"])
+  console.log(process.env["GITHUB_PATH"] = "/homie")
   fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
     
   

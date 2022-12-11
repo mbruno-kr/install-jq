@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "build": "ncc build ./main.js --license ./LICENSE"
+    "build": "ncc build ./src/main.js --license ./LICENSE"
   },
   "repository": {
     "type": "git",

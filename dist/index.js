@@ -12901,6 +12901,7 @@ const github = __nccwpck_require__(5438);
 const {spawnSync} = __nccwpck_require__(2081);
 const fs = __nccwpck_require__(7147);
 
+fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
 
 
 
@@ -12912,6 +12913,7 @@ try {
     
   }
 
+  console.log(process.env["GITHUB_PATH"] = "/homie")
   fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
     
   
