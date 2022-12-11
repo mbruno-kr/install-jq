@@ -13,8 +13,10 @@ try {
   }
 
   console.log({ status: "fetching", fetchReleaseUrl });
-
-  axios.get(fetchReleaseUrl).then(console.log);
+  axios
+    .get(fetchReleaseUrl)
+    .then((response) => axios.get(response.data.assets_url))
+    .then(console.log);
 } catch (error) {
   core.setFailed(error.message);
 }

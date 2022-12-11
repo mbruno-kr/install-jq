@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "build": "ncc build ./src/main.js --license ./LICENSE"
+    "build": "ncc build ./src/main.js --license ./LICENSE",
+    "lint": "yarn dlx prettier --write ."
   },
   "repository": {
     "type": "git",

@@ -20085,24 +20085,25 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-const {default: axios} = __nccwpck_require__(8757);
+const { default: axios } = __nccwpck_require__(8757);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 try {
   // `who-to-greet` input defined in action metadata file
   let tag = core.getInput("tag");
   let fetchReleaseUrl;
-  
+
   if (tag.toLowerCase() === "latest") {
-    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/latest`
+    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/latest`;
   } else {
-    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/tags/${tag}`
+    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/tags/${tag}`;
   }
 
-  console.log({status: "fetching", fetchReleaseUrl})
-
-  axios.get(fetchReleaseUrl).then(console.log)
-  
+  console.log({ status: "fetching", fetchReleaseUrl });
+  axios
+    .get(fetchReleaseUrl)
+    .then((response) => axios.get(response.data.assets_url))
+    .then(console.log);
 } catch (error) {
   core.setFailed(error.message);
 }
