@@ -16148,7 +16148,7 @@ try {
   if (version.toLowerCase === "latest") {
   }
 
-  console.log(process.env["GITHUB_PATH"]);
+  console.log("this file:", process.env["GITHUB_PATH"]);
   fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
 } catch (error) {
   core.setFailed(error.message);
