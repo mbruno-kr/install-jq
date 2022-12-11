@@ -20090,10 +20090,10 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 try {
   // `who-to-greet` input defined in action metadata file
-  let version = core.getInput("tag");
+  let tag = core.getInput("tag");
   let fetchReleaseUrl;
   
-  if (version.toLowerCase === "latest") {
+  if (tag.toLowerCase === "latest") {
     fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/latest`
   } else {
     fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/tags/${tag}`
