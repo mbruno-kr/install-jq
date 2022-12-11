@@ -9710,7 +9710,7 @@ try {
   
   
 
-  core.exportVariable(GITHUB_ENV, process.env["GITHUB_ENV"] += "\ntest_var=true")
+  core.exportVariable("GITHUB_ENV", process.env["GITHUB_ENV"] += "\ntest_var=true")
   
 
 
