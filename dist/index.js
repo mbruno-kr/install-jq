@@ -20103,7 +20103,12 @@ try {
   axios
     .get(fetchReleaseUrl)
     .then((response) => axios.get(response.data.assets_url))
-    .then(console.log);
+    .then(({ data }) =>
+      Promise.resolve(data.find(({ name }) => name.includes("linux64")))
+    )
+    .then(({ browser_download_url }) => {
+      console.log({ browser_download_url });
+    });
 } catch (error) {
   core.setFailed(error.message);
 }
