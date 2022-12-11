@@ -9707,7 +9707,7 @@ try {
 
   spawnSync(`echo "test_var=true" >> $GITHUB_ENV`)
 
-  
+  console.log(process.env["GITHUB_ENV"])
   
 
   core.exportVariable("test_var", "true")
