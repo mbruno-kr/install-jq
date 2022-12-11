@@ -3,10 +3,10 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 try {
   // `who-to-greet` input defined in action metadata file
-  let version = core.getInput("tag");
+  let tag = core.getInput("tag");
   let fetchReleaseUrl;
   
-  if (version.toLowerCase === "latest") {
+  if (tag.toLowerCase === "latest") {
     fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/latest`
   } else {
     fetchReleaseUrl = `https://api.github.com/repos/${"stedolan"}/${"jq"}/releases/tags/${tag}`
