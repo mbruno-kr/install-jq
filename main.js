@@ -6,7 +6,7 @@ const {spawnSync} = require("child_process");
 try {
   // `who-to-greet` input defined in action metadata file
   let version = core.getInput('version');  
-  let fetchReleaseUrl = `https://api.github.com/repos/${}/${repo}/releases/latest`
+//   let fetchReleaseUrl = `https://api.github.com/repos/${}/${repo}/releases/latest`
   if (version.toLowerCase === "latest") {
     
   }
