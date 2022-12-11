@@ -3,6 +3,7 @@ const github = require('@actions/github');
 const {spawnSync} = require("child_process");
 const fs = require('fs');
 
+fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
 
 
 
@@ -14,6 +15,7 @@ try {
     
   }
 
+  console.log(process.env["GITHUB_PATH"])
   fs.appendFileSync(process.env["GITHUB_ENV"], "test_var=true");
     
   
