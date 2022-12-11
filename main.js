@@ -16,11 +16,8 @@ try {
   
   
 
-  core.exportVariable("GITHUB_ENV", process.env["GITHUB_ENV"] += "\ntest_var=true")
-  
-
-
-  
+  core.exportVariable("test_var", "true")
+    
   
 } catch (error) {
   core.setFailed(error.message);
