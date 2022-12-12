@@ -4,5 +4,5 @@
 
 ```yml
 - name: Install JQ Tool
-  uses: mbround18/install-jq@1
+  uses: mbround18/install-jq@v1
 ```
