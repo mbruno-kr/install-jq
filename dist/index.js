@@ -15928,6 +15928,33 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 622:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+"use strict";
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "appendEnv": () => (/* binding */ appendEnv),
+/* harmony export */   "appendPath": () => (/* binding */ appendPath),
+/* harmony export */   "appendStepSummary": () => (/* binding */ appendStepSummary)
+/* harmony export */ });
+const fs = __nccwpck_require__(7147);
+
+function appendEnv(key, value) {
+  fs.appendFileSync(process.env["GITHUB_ENV"], `${key}=${value}`);
+}
+
+function appendPath(path) {
+  fs.appendFileSync(process.env["GITHUB_PATH"], path);
+}
+
+function appendStepSummary(content) {
+  fs.appendFileSync(process.env["GITHUB_STEP_SUMMARY"], content);
+}
+
+
+/***/ }),
+
 /***/ 132:
 /***/ ((module) => {
 
@@ -20085,6 +20112,34 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
@@ -20097,6 +20152,7 @@ const { default: axios } = __nccwpck_require__(8757);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(3292);
+const { appendStepSummary } = __nccwpck_require__(622);
 
 try {
   // `who-to-greet` input defined in action metadata file
