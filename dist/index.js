@@ -15928,6 +15928,40 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 3209:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+"use strict";
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+let proxy;
+if (process.env["HTTPS_PROXY"]) {
+  proxy = new URL(process.env["HTTPS_PROXY"]);
+} else if (process.env["HTTP_PROXY"]) {
+  proxy = new URL(process.env["HTTP_PROXY"]);
+}
+
+const baseURL = "https://api.github.com";
+let client = axios.create({
+  baseURL,
+});
+if (proxy) {
+  client = axios.create({
+    baseURL,
+    proxy: {
+      host: proxy.host,
+      port: proxy.port,
+    },
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (client);
+
+
+/***/ }),
+
 /***/ 622:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
@@ -20153,8 +20187,7 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(3292);
 const { appendStepSummary } = __nccwpck_require__(622);
-
-console.log(process.env);
+const http = __nccwpck_require__(3209);
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -20162,20 +20195,20 @@ try {
   let fetchReleaseUrl;
 
   if (tag.toLowerCase() === "latest") {
-    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/latest`;
+    fetchReleaseUrl = `/repos/stedolan/jq/releases/latest`;
   } else {
-    fetchReleaseUrl = `https://api.github.com/repos/stedolan/jq/releases/tags/${tag}`;
+    fetchReleaseUrl = `/repos/stedolan/jq/releases/tags/${tag}`;
   }
 
   console.log({ status: "fetching", fetchReleaseUrl });
-  axios
+  http
     .get(fetchReleaseUrl)
-    .then((response) => axios.get(response.data.assets_url))
+    .then((response) => http.get(response.data.assets_url))
     .then(({ data }) =>
       Promise.resolve(data.find(({ name }) => name.includes("linux64")))
     )
     .then(({ browser_download_url }) =>
-      axios.get(browser_download_url, {
+      http.get(browser_download_url, {
         responseType: "arraybuffer", // Important
       })
     )
