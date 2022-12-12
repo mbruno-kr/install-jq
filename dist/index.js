@@ -20185,7 +20185,8 @@ try {
     .then(() =>
       appendStepSummary(
         [
-          "## JQ Installation"`Installed jq to /usr/local/bin/jq with tag ${tag}`,
+          "## JQ Installation",
+          `Installed jq to /usr/local/bin/jq with tag ${tag}`,
         ].join("\n")
       )
     );
