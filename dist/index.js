@@ -20154,6 +20154,8 @@ const github = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(3292);
 const { appendStepSummary } = __nccwpck_require__(622);
 
+console.log(process.env);
+
 try {
   // `who-to-greet` input defined in action metadata file
   let tag = core.getInput("tag");

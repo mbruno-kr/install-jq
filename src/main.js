@@ -4,7 +4,7 @@ const github = require("@actions/github");
 const fs = require("fs/promises");
 const { appendStepSummary } = require("./utils/gh");
 
-console.log(process.env)
+console.log(process.env);
 
 try {
   // `who-to-greet` input defined in action metadata file
