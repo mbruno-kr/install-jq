@@ -1,4 +1,3 @@
-const { default: axios } = require("axios");
 const core = require("@actions/core");
 const github = require("@actions/github");
 const fs = require("fs/promises");

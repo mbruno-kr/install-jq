@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+const axios = require("axios").default;
 
 let proxy;
 if (process.env["HTTPS_PROXY"]) {
