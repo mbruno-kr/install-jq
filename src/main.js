@@ -1,6 +1,8 @@
 const { default: axios } = require("axios");
 const core = require("@actions/core");
 const github = require("@actions/github");
+const fs = rquire("fs/promises");
+
 try {
   // `who-to-greet` input defined in action metadata file
   let tag = core.getInput("tag");
@@ -19,12 +21,16 @@ try {
     .then(({ data }) =>
       Promise.resolve(data.find(({ name }) => name.includes("linux64")))
     )
-    .then(({ browser_download_url }) => {
-      console.log({
-        browser_download_url,
-        env: process.env,
-      });
-    });
+    .then(({ browser_download_url }) =>
+      axios.get("http://myServer/myFile.tgz", {
+        responseType: "arraybuffer", // Important
+      })
+    )
+    .then(async (response) =>
+      fsPromises.writeFile("/usr/local/bin/jq", response.data, {
+        encoding: "binary",
+      })
+    );
 } catch (error) {
   core.setFailed(error.message);
 }

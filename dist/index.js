@@ -20088,6 +20088,8 @@ var __webpack_exports__ = {};
 const { default: axios } = __nccwpck_require__(8757);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
+const fs = rquire("fs/promises");
+
 try {
   // `who-to-greet` input defined in action metadata file
   let tag = core.getInput("tag");
@@ -20106,12 +20108,16 @@ try {
     .then(({ data }) =>
       Promise.resolve(data.find(({ name }) => name.includes("linux64")))
     )
-    .then(({ browser_download_url }) => {
-      console.log({
-        browser_download_url,
-        env: process.env,
-      });
-    });
+    .then(({ browser_download_url }) =>
+      axios.get("http://myServer/myFile.tgz", {
+        responseType: "arraybuffer", // Important
+      })
+    )
+    .then(async (response) =>
+      fsPromises.writeFile("/usr/local/bin/jq", response.data, {
+        encoding: "binary",
+      })
+    );
 } catch (error) {
   core.setFailed(error.message);
 }
