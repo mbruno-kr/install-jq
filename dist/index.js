@@ -15936,6 +15936,8 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+const { default: axios } = __nccwpck_require__(8757);
+
 let proxy;
 if (process.env["HTTPS_PROXY"]) {
   proxy = new URL(process.env["HTTPS_PROXY"]);

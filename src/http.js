@@ -1,3 +1,5 @@
+const { default: axios } = require("axios");
+
 let proxy;
 if (process.env["HTTPS_PROXY"]) {
   proxy = new URL(process.env["HTTPS_PROXY"]);
