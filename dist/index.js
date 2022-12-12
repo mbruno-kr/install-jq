@@ -15934,7 +15934,7 @@ function wrappy (fn, cb) {
 "use strict";
 __nccwpck_require__.r(__webpack_exports__);
 /* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "client": () => (/* binding */ client)
 /* harmony export */ });
 const axios = (__nccwpck_require__(8757)["default"]);
 
@@ -15946,20 +15946,19 @@ if (process.env["HTTPS_PROXY"]) {
 }
 
 const baseURL = "https://api.github.com";
-let client = axios.create({
+
+let options = {
   baseURL,
-});
+};
+
 if (proxy) {
-  client = axios.create({
-    baseURL,
-    proxy: {
-      host: proxy.host,
-      port: proxy.port,
-    },
-  });
+  options["proxy"] = {
+    host: proxy.host,
+    port: proxy.port,
+  };
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (client);
+const client = axios.create(options);
 
 
 /***/ }),
@@ -20188,7 +20187,7 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(3292);
 const { appendStepSummary } = __nccwpck_require__(622);
-const http = __nccwpck_require__(3209);
+const { client } = __nccwpck_require__(3209);
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -20202,14 +20201,14 @@ try {
   }
 
   console.log({ status: "fetching", fetchReleaseUrl });
-  http
+  client
     .get(fetchReleaseUrl)
-    .then((response) => http.get(response.data.assets_url))
+    .then((response) => client.get(response.data.assets_url))
     .then(({ data }) =>
       Promise.resolve(data.find(({ name }) => name.includes("linux64")))
     )
     .then(({ browser_download_url }) =>
-      http.get(browser_download_url, {
+      client.get(browser_download_url, {
         responseType: "arraybuffer", // Important
       })
     )

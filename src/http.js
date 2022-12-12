@@ -8,17 +8,16 @@ if (process.env["HTTPS_PROXY"]) {
 }
 
 const baseURL = "https://api.github.com";
-let client = axios.create({
+
+let options = {
   baseURL,
-});
+};
+
 if (proxy) {
-  client = axios.create({
-    baseURL,
-    proxy: {
-      host: proxy.host,
-      port: proxy.port,
-    },
-  });
+  options["proxy"] = {
+    host: proxy.host,
+    port: proxy.port,
+  };
 }
 
-export default client;
+export const client = axios.create(options);

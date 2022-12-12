@@ -2,7 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const fs = require("fs/promises");
 const { appendStepSummary } = require("./utils/gh");
-const http = require("./http");
+const { client } = require("./http");
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -16,14 +16,14 @@ try {
   }
 
   console.log({ status: "fetching", fetchReleaseUrl });
-  http
+  client
     .get(fetchReleaseUrl)
-    .then((response) => http.get(response.data.assets_url))
+    .then((response) => client.get(response.data.assets_url))
     .then(({ data }) =>
       Promise.resolve(data.find(({ name }) => name.includes("linux64")))
     )
     .then(({ browser_download_url }) =>
-      http.get(browser_download_url, {
+      client.get(browser_download_url, {
         responseType: "arraybuffer", // Important
       })
     )
