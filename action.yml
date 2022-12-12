@@ -1,5 +1,8 @@
-name: "Install JQ"
+name: "Install JQ Tool"
 description: "Installs the cli tool JQ"
+branding:
+  icon: award
+  color: purple
 inputs:
   tag: # id of input
     description: "tag to install"
