@@ -20122,7 +20122,7 @@ try {
       })
     )
     .then(async (response) =>
-      fsPromises.writeFile("/usr/local/bin/jq", response.data, {
+      fs.writeFile("/usr/local/bin/jq", response.data, {
         encoding: "binary",
       })
     )
