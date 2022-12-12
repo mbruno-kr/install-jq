@@ -15951,13 +15951,13 @@ let options = {
   baseURL,
 };
 
-if (proxy) {
-  options["proxy"] = {
-    host: proxy.host,
-    port: proxy.port,
-    protocol: proxy.protocol,
-  };
-}
+// if (proxy) {
+//   options["proxy"] = {
+//     host: proxy.host,
+//     port: proxy.port,
+//     protocol: proxy.protocol,
+//   };
+// }
 
 const client = axios.create(options);
 
