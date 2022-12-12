@@ -15976,6 +15976,14 @@ module.exports = require("fs");
 
 /***/ }),
 
+/***/ 3292:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs/promises");
+
+/***/ }),
+
 /***/ 3685:
 /***/ ((module) => {
 
@@ -20088,7 +20096,7 @@ var __webpack_exports__ = {};
 const { default: axios } = __nccwpck_require__(8757);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
-const fs = rquire("fs/promises");
+const fs = __nccwpck_require__(3292);
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -20117,6 +20125,9 @@ try {
       fsPromises.writeFile("/usr/local/bin/jq", response.data, {
         encoding: "binary",
       })
+    )
+    .then(() =>
+      appendStepSummary("### Successfully Download JQ to /usr/local/bin/jq")
     );
 } catch (error) {
   core.setFailed(error.message);

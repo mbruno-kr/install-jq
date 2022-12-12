@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const core = require("@actions/core");
 const github = require("@actions/github");
-const fs = rquire("fs/promises");
+const fs = require("fs/promises");
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -30,6 +30,9 @@ try {
       fsPromises.writeFile("/usr/local/bin/jq", response.data, {
         encoding: "binary",
       })
+    )
+    .then(() =>
+      appendStepSummary("### Successfully Download JQ to /usr/local/bin/jq")
     );
 } catch (error) {
   core.setFailed(error.message);
