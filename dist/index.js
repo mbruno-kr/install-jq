@@ -15955,6 +15955,7 @@ if (proxy) {
   options["proxy"] = {
     host: proxy.host,
     port: proxy.port,
+    protocol: proxy.protocol,
   };
 }
 
