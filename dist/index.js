@@ -20117,7 +20117,7 @@ try {
       Promise.resolve(data.find(({ name }) => name.includes("linux64")))
     )
     .then(({ browser_download_url }) =>
-      axios.get("http://myServer/myFile.tgz", {
+      axios.get(browser_download_url, {
         responseType: "arraybuffer", // Important
       })
     )
