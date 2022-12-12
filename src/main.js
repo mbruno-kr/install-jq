@@ -33,7 +33,11 @@ try {
       })
     )
     .then(() =>
-      appendStepSummary("### Successfully Download JQ to /usr/local/bin/jq")
+      appendStepSummary(
+        [
+          "## JQ Installation"`Installed jq to /usr/local/bin/jq with tag ${tag}`,
+        ].join("\n")
+      )
     );
 } catch (error) {
   core.setFailed(error.message);
