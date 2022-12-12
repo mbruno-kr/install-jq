@@ -12,3 +12,5 @@ jobs:
       - run: |
           echo "${{ env.test_var }}"
           echo "${GITHUB_PATH}"
+      - run: |
+          curl "https://api.github.com/repos/stedolan/jq/releases/latest" | jq '.html_url'
